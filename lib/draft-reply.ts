@@ -63,7 +63,9 @@ function pageText(p: Product): string {
 export function checkDraft(reply: string, ingredientsQuoted: string[], p: Product): string | null {
   const entries = new Set(splitIngredients(p.ingredient_list));
   for (const q of ingredientsQuoted) {
-    if (!entries.has(q.trim())) return `ingredient_not_on_page: ${q}`;
+    // The prompt annotates entries as "[plain name: X]"; the model sometimes copies that tag. Strip the tag, then still require an exact page entry.
+    const entry = q.replace(/\s*\[plain name:[^\]]*\]\s*$/, "").trim();
+    if (!entries.has(entry)) return `ingredient_not_on_page: ${q}`;
   }
   const r = norm(reply);
   const page = pageText(p);

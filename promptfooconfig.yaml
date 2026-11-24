@@ -1,0 +1,15 @@
+# Grades the drafter on all 120 shopper questions. Run:
+#   npx promptfoo eval --env-file .env.local -o out/eval.json
+description: Shopify Inbox AI drafter, 120 shopper questions
+prompts:
+  - "{{question_text}}"
+providers:
+  - file://promptfoo/provider.ts
+tests: file://promptfoo/build-tests.ts
+defaultTest:
+  assert:
+    - type: javascript
+      value: file://promptfoo/judge.ts
+evaluateOptions:
+  maxConcurrency: 3
+  cache: false

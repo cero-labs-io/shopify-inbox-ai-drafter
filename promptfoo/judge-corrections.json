@@ -1,0 +1,4 @@
+{
+  "Q-012": "Judge faulted 'the page states no allergen information'. The allergen cell on DSP-011 is empty, and guardrail 4 requires exactly that wording. Judge error.",
+  "Q-075": "Judge faulted the 'page makes no free-of claim / merchant will check' wording. Argan is absent from the list and guardrail 5 requires the merchant-check wording for an absent ingredient. Judge error."
+}
